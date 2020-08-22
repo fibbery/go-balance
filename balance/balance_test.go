@@ -43,12 +43,43 @@ func TestRoundRobin(t *testing.T) {
 }
 
 func TestRandom(t *testing.T) {
-
+	for i := 0; i < len(instances); i++ {
+		balance, err := DoBalance("random", instances)
+		if err != nil {
+			t.Log("do balance error", err)
+		}
+		t.Log("select instance " + balance.String())
+	}
 }
 
-func TestGcd(t *testing.T) {
-	t.Log(gcd(12, 6))
-	t.Log(gcdAll([]int{12, 6, 3}))
+func TestShuffle2(t *testing.T) {
+	for i := 0; i < len(instances); i++ {
+		balance, err := DoBalance("shuffle2", instances)
+		if err != nil {
+			t.Log("do balance error", err)
+		}
+		t.Log("select instance " + balance.String())
+	}
+}
+
+func TestShuffle(t *testing.T) {
+	for i := 0; i < len(instances); i++ {
+		balance, err := DoBalance("shuffle", instances)
+		if err != nil {
+			t.Log("do balance error", err)
+		}
+		t.Log("select instance " + balance.String())
+	}
+}
+
+func TestHashconsistent(t *testing.T) {
+	for i := 0; i < len(instances); i++ {
+		balance, err := DoBalance("hashconsistent", instances)
+		if err != nil {
+			t.Log("do balance error", err)
+		}
+		t.Log("select instance " + balance.String())
+	}
 }
 
 func TestWrr(t *testing.T) {
